@@ -10,7 +10,7 @@ using Xamarin.Forms.Xaml;
 namespace TriggersMVVM_JSVE.Vistas
 {
     [XamlCompilation(XamlCompilationOptions.Compile)]
-    public partial class Vcategoria : ContentView
+    public partial class Vcategoria : ContentPage
     {
         public Vcategoria()
         {

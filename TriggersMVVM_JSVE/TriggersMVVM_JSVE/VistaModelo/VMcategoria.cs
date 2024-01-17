@@ -13,40 +13,38 @@ namespace TriggersMVVM_JSVE.VistaModelo
 {
     public class VMcategoria : BaseViewModel
     {
-        #region VARIABLES
         string _Texto;
-        ObservableCollection<VMcategoria> _listaCategorias;
-        #endregion
+        ObservableCollection<Mcategorias> _listaCategorias;
 
-        #region CONSTRUCTOR
         public VMcategoria(INavigation navigation)
         {
             Navigation = navigation;
-            MostrarCategorias();
-        }
-        #endregion
-        #region OBJETOS
-        public ObservableCollection<VMcategoria> ListaCategorias
-        {
-            get { return _listaCategorias; }
-            set { SetValue(ref _listaCategorias, value); }
+            MostrarCategoria();
         }
 
-        #endregion
-        #region PROCESOS
+
+        public ObservableCollection<Mcategorias> ListaCategorias
+        {
+            get { return _listaCategorias; }
+            set { SetProperty(ref _listaCategorias, value); }
+        }
+
+
+
         public async Task ProcesoAsyncrono()
         {
 
         }
-        public void MostrarCategorias()
+
+        public void MostrarCategoria()
         {
-            //al hacer esto jalamos la data cawn
-            ListaCategorias = new ObservableCollection<Mcategorias>(Datos.Dcategorias.MostrarCategorias());
+            _listaCategorias = new ObservableCollection<Mcategorias>(Datos.Dcategorias.MostrarCategorias());
+
         }
-        #endregion
-        #region COMANDOS
-        public ICommand ProcesoAsynccomand => new Command(async () => await ProcesoAsyncrono());
-        public ICommand ProcesoSimpcomand => new Command(MostrarCategorias);
-        #endregion
+
+
+        public ICommand ProcesoAsyncomand => new Command(async () => await ProcesoAsyncrono());
+        public ICommand ProcesoSimpcomand => new Command(MostrarCategoria);
+
     }
 }
