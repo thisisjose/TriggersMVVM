@@ -1,4 +1,5 @@
 ﻿using System;
+using TriggersMVVM_JSVE.Vistas;
 using Xamarin.Forms;
 using Xamarin.Forms.Xaml;
 
@@ -10,7 +11,7 @@ namespace TriggersMVVM_JSVE
         {
             InitializeComponent();
 
-            MainPage = new MainPage();
+            MainPage = new Vcategoria();
         }
 
         protected override void OnStart()
