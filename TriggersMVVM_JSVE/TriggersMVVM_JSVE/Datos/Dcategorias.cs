@@ -17,7 +17,7 @@ namespace TriggersMVVM_JSVE.Datos
                     descripcion = "Cena",
                     numeroItem = 4512,
                     imagen="https://i.ibb.co/NVyvSwK/cena-de-navidad.png",
-                    backgroundColor="EAEDF6",
+                    backgroundColor="#808080",
                     textColor="#000000"
                 },
                 new Mcategorias()
@@ -25,7 +25,7 @@ namespace TriggersMVVM_JSVE.Datos
                     descripcion="Hotel",
                     numeroItem=4512,
                     imagen="https://i.ibb.co/48wW2L3/dormir-1.png",
-                    backgroundColor="EAEDF6",
+                    backgroundColor="#808080",
                     textColor="#00000"
                 },
                 new Mcategorias()
@@ -33,7 +33,7 @@ namespace TriggersMVVM_JSVE.Datos
                     descripcion="Fiesta",
                     numeroItem=4215,
                     imagen="https://i.ibb.co/MZ8TsHf/baile.png",
-                    backgroundColor="EAEDF6",
+                    backgroundColor="#808080",
                     textColor="000000",
                 },
                 new Mcategorias()
@@ -41,7 +41,7 @@ namespace TriggersMVVM_JSVE.Datos
                     descripcion="Flores",
                     numeroItem=4215,
                     imagen="https://i.ibb.co/jD0z2QC/maceta.png",
-                    backgroundColor="EAEDF6",
+                    backgroundColor="#808080",
                     textColor="000000",
                 }
             };
