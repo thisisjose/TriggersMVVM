@@ -12,12 +12,14 @@
   </PropertyGroup>
 
   <ItemGroup>
-    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
-    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
+    <Compile Remove="Triggers\**" />
+    <EmbeddedResource Remove="Triggers\**" />
+    <None Remove="Triggers\**" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="Triggers\" />
+    <PackageReference Include="Xamarin.Forms" Version="5.0.0.2196" />
+    <PackageReference Include="Xamarin.Essentials" Version="1.7.0" />
   </ItemGroup>
 
   <ItemGroup>
