@@ -84,6 +84,7 @@ namespace TriggersMVVM_JSVE.VistaModelo
 
         public ICommand ProcesoAsyncomand => new Command(async () => await ProcesoAsyncrono());
         public ICommand ProcesoSimpcomand => new Command(MostrarCategorias);
+        public ICommand Seleccionarcomand => new Command<Mcategorias>((p) => Seleccionar(p));
 
     }
 }
