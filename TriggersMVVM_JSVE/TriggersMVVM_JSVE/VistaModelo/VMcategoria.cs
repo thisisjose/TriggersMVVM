@@ -14,34 +14,36 @@ namespace TriggersMVVM_JSVE.VistaModelo
 {
     public class VMcategoria : BaseViewModel
     {
-        string _Texto;
-        ObservableCollection<Mcategorias> _listaCategorias;
+        #region VARIABLES
         bool _activadorAnimacionImg;
         string _imagen;
-
+        ObservableCollection<Mcategorias> _listaCategorias;
+        #endregion
+        #region CONSTRUCTOR
         public VMcategoria(INavigation navigation)
         {
             Navigation = navigation;
-            MostrarCategoria();
+            MostrarCategorias();
         }
-
+        #endregion
+        #region OBJETOS
         public string Imagen
         {
             get { return _imagen; }
             set { SetValue(ref _imagen, value); }
         }
-
-        public ObservableCollection<Mcategorias> ListaCategorias
-        {
-            get { return _listaCategorias; }
-            set { SetProperty(ref _listaCategorias, value); }
-        }
-
         public bool ActivadorAnimacionImg
         {
             get { return _activadorAnimacionImg; }
             set { SetValue(ref _activadorAnimacionImg, value); }
         }
+        public ObservableCollection<Mcategorias> ListaCategorias
+        {
+            get { return _listaCategorias; }
+            set { SetValue(ref _listaCategorias, value); }
+        }
+        #endregion
+        #region PROCESOS
         public void Seleccionar(Mcategorias modelo)
         {
             var index = ListaCategorias
@@ -53,10 +55,9 @@ namespace TriggersMVVM_JSVE.VistaModelo
                 Deseleccionar();
                 ActivadorAnimacionImg = true;
                 ListaCategorias[index].selected = true;
-                ListaCategorias[index].textColor = "#FFFFFF";
-                ListaCategorias[index].backgroundColor = "#FF506B";
+                ListaCategorias[index].textColor = "FFFFFF";
+                ListaCategorias[index].backgroundColor = "FF506B";
             }
-
         }
         public void Deseleccionar()
         {
@@ -73,16 +74,16 @@ namespace TriggersMVVM_JSVE.VistaModelo
         {
 
         }
-
-        public void MostrarCategoria()
+        public void MostrarCategorias()
         {
-            _listaCategorias = new ObservableCollection<Mcategorias>(Datos.Dcategorias.MostrarCategorias());
-
+            //Para agarrar todos los datos
+            ListaCategorias = new ObservableCollection<Mcategorias>(Datos.Dcategorias.MostrarCategorias());
         }
+        #endregion
 
 
         public ICommand ProcesoAsyncomand => new Command(async () => await ProcesoAsyncrono());
-        public ICommand ProcesoSimpcomand => new Command(MostrarCategoria);
+        public ICommand ProcesoSimpcomand => new Command(MostrarCategorias);
 
     }
 }

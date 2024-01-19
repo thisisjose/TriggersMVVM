@@ -2,53 +2,56 @@
 <ContentPage xmlns="http://xamarin.com/schemas/2014/forms" 
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="TriggersMVVM_JSVE.Vistas.Vcategoria"
-             xmlns:disparador="clr-namespace:TriggersMVVM_JSVE.Triggers.Tcategoria">
+               xmlns:disparador="clr-namespace:TriggersMVVM_JSVE.Trigger.Tcategoria">
 
 
-    <Grid RowDefinitions="auto, *" BackgroundColor="White">
-      <StackLayout HeightRequest="180" Margin="10">
-          <Label Text="Posibles regalos"
-                 FontSize="25"
-                 FontAttributes="Bold"
-                 TextColor="#FF506B"/>
+    <Grid RowDefinitions="Auto,*" BackgroundColor="White">
+        <StackLayout HeightRequest="180" Margin="20">
+            <Label Text="Posibles regalos"
+             FontAttributes="Bold"
+             FontSize="30"
+             TextColor="#FF506B"/>
             <Label Text="Data triger"
-                   FontSize="15"
-                   FontAttributes="Bold"
-                   TextColor="#8D8D8D"/>
-            <CollectionView ItemsSource="{Binding ListaCategorias}">
+             FontAttributes="Bold"
+             FontSize="19"
+              TextColor="#8D8D8D"/>
+            <CollectionView 
+            ItemsSource="{Binding ListaCategorias}" x:Name="listaCategorias">
                 <CollectionView.ItemsLayout>
-                    <LinearItemsLayout ItemSpacing="5"
-                                       Orientation="Horizontal"/>
+                    <LinearItemsLayout Orientation="Horizontal" ItemSpacing="5"/>
                 </CollectionView.ItemsLayout>
                 <CollectionView.ItemTemplate>
                     <DataTemplate>
                         <Grid>
                             <Frame Margin="0,5,5,5"
-                                   Padding="8" BackgroundColor="{Binding backgroundColor}" CornerRadius="35"
-                                   HeightRequest="50" WidthRequest="135" HasShadow="False" VerticalOptions="Center">
-                                <Grid ColumnDefinitions="auto, *" RowSpacing="0" VerticalOptions="Center">
-                                    <BoxView BackgroundColor="White" CornerRadius="25"
-                                             HeightRequest="50" WidthRequest="50"/>
-                                    <Image Source="{Binding imagen}" HeightRequest="25" HorizontalOptions="Center"
-                                           VerticalOptions="CenterAndExpand" WidthRequest="35"/>
+                                Padding="8" BackgroundColor="{Binding backgroundColor}" CornerRadius="35"
+                                 HeightRequest = "50" WidthRequest = "135" HasShadow="False" VerticalOptions="Center">
+                                <Grid ColumnDefinitions ="Auto,*" RowSpacing="0" VerticalOptions="Center">
+                                    <BoxView BackgroundColor = "white" CornerRadius = "25"/>
+                                    <Image Source = "{Binding imagen}" HeightRequest = "35" HorizontalOptions = "Center"
+                                       VerticalOptions="CenterAndExpand" WidthRequest="35"/>
                                     <StackLayout Grid.Column="1">
                                         <Label Text="{Binding descripcion}" FontSize="16"
-                                               VerticalOptions="Start" TextColor="{Binding textColor}"/>
+                                         VerticalOptions ="Start" TextColor="{Binding textColor}"/>
                                         <Label Text="{Binding numeroItem}" FontSize="9"
-                                               VerticalOptions="Start" TextColor="{Binding textColor}"/>
+                                         VerticalOptions ="Start" TextColor="{Binding textColor}"/>
                                     </StackLayout>
                                 </Grid>
+                                <Frame.GestureRecognizers>
+                                    <TapGestureRecognizer Command="{Binding Path=BindingContext.Seleccionarcomand,Source={x:Reference listaCategorias}}" CommandParameter="{Binding .}"/>
+                                </Frame.GestureRecognizers>
                             </Frame>
                         </Grid>
                     </DataTemplate>
                 </CollectionView.ItemTemplate>
             </CollectionView>
         </StackLayout>
-        <Image Grid.Row="1" VerticalOptions="CenterAndExpand" HeightRequest="250" Source="{Binding Imagen}">
+        <Image Grid.Row="1" VerticalOptions="CenterAndExpand" HeightRequest="250"
+       Source="{Binding Imagen}">
             <Image.Triggers>
                 <MultiTrigger TargetType="Image">
                     <MultiTrigger.Conditions>
-                        <BindingCondition Binding="{Binding ActivadorAnimacionImg}" Value="true"/>
+                        <BindingCondition Binding="{Binding ActivadorAnimacionImg}" Value="True"/>
                     </MultiTrigger.Conditions>
                     <MultiTrigger.EnterActions>
                         <disparador:Timagen activacion="True"/>
